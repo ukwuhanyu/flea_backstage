@@ -82,6 +82,7 @@
   </div>
 </template>
 <script>
+import {getApi} from '../../common/model'
 export default {
   name: 'Index',
   data () {
@@ -94,6 +95,13 @@ export default {
     isShow () {
       this.isCollapse = !this.isCollapse
     }
+  },
+  created () {
+    getApi({
+      limit: 10,order: 'new'
+    }).then(res => {
+      console.log(res,9999)
+    })
   }
 }
 </script>

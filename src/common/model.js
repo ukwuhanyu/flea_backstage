@@ -1,4 +1,6 @@
 /**
  * api接口
  */
-export const apiAddress = p = get('/user')
+import { get, post } from './axios-init.js'
+// p是参数
+export const getApi = p => get('/top/playlist', p)
