@@ -82,7 +82,7 @@
   </div>
 </template>
 <script>
-import {getApi} from '../../common/model'
+import {getMenu} from '../../common/model'
 export default {
   name: 'Index',
   data () {
@@ -97,9 +97,7 @@ export default {
     }
   },
   created () {
-    getApi({
-      limit: 10,order: 'new'
-    }).then(res => {
+    getMenu().then(res => {
       console.log(res,9999)
     })
   }
