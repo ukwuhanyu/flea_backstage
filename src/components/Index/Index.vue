@@ -40,18 +40,17 @@
               active-text-color="#ffd04b"
               :collapse="isCollapse"
               :collapse-transition="transition"
-              :unique-opened=true
-              :router="true">     
+              :unique-opened=true>     
               <!-- 判断一级菜单是否有结点（没有这种情况） -->
-               <el-menu-item :index="item.menuUrl" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length == 0">
+               <el-menu-item :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length == 0">
                 <i class="el-icon-document"></i>
                 <span slot="title">{{item.menuName}}</span>
               </el-menu-item>
 
               <!-- 判断一级菜单是否有结点（有这种情况） -->
-              <el-submenu v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length != 0">
+              <el-submenu :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length != 0">
                 <!-- 判断二级菜单是否有结点（没有这种情况） -->
-                <el-menu-item :index="item2.menuUrl" v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length == 0">{{item2.menuName}}</el-menu-item>
+                <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length == 0">{{item2.menuName}}</el-menu-item>
                 <template slot="title">
                   <i :class="item.menuImg"></i>
                   <span slot="title">{{item.menuName}}</span>
@@ -63,7 +62,7 @@
                   </template>
                   <!-- 三级菜单 -->
                   <el-menu-item-group>
-                    <el-menu-item :index="item3.menuUrl" v-for="(item3, index3) in item2.threeSubmenus" :key="index3">{{item3.menuName}}</el-menu-item>
+                    <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()+'-'+(index3+1).toString()" v-for="(item3, index3) in item2.threeSubmenus" :key="index3">{{item3.menuName}}</el-menu-item>
                   </el-menu-item-group>
                 </el-submenu>
               </el-submenu>
