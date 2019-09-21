@@ -67,13 +67,6 @@
                 </el-submenu>
               </el-submenu>
 
-               <!-- 
-              <el-menu-item index="3" disabled>
-                <i class="el-icon-document"></i>
-                <span slot="title">导航三</span>
-              </el-menu-item> 
-              -->
-
             </el-menu>
           </el-col>
         </div>
@@ -166,6 +159,9 @@ export default {
     }
     // 划过背景颜色
     .el-submenu >>> .el-submenu__title:hover {
+      background-color: rgb(40,52,70)!important
+    }
+    .el-submenu__title:hover {
       background-color: rgb(40,52,70)!important
     }
     // 文字居左
