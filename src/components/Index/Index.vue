@@ -56,7 +56,7 @@
                   <span slot="title">{{item.menuName}}</span>
                 </template>
                 <!-- 判断二级菜单是否有结点（有这种情况） -->
-                <el-submenu v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length != 0">
+                <el-submenu :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length != 0">
                   <template>
                     <span slot="title">{{item2.menuName}}</span>
                   </template>
@@ -104,7 +104,7 @@ export default {
   created () {
     getMenu().then(res => {
       console.log(res,9999)
-      this.menuList = res
+      this.menuList = res.data
     })
   }
 }
