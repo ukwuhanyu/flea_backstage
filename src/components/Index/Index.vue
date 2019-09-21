@@ -32,7 +32,7 @@
         <div class="el-aside">
           <el-col>
             <el-menu
-              default-active="2"
+
               mode="vertical"
               class="el-menu-vertical-demo"
               background-color="rgb(50, 65, 87)"
@@ -42,7 +42,7 @@
               :collapse-transition="transition"
               :unique-opened=true>     
               <!-- 判断一级菜单是否有结点（没有这种情况） -->
-               <el-menu-item :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length == 0">
+               <el-menu-item :index="(index+1).toString()" v-for="(item, index) in menuList" :key="'info1'+index" v-show="item.twoSubmenus.length == 0">
                 <i class="el-icon-document"></i>
                 <span slot="title">{{item.menuName}}</span>
               </el-menu-item>
@@ -50,13 +50,13 @@
               <!-- 判断一级菜单是否有结点（有这种情况） -->
               <el-submenu :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length != 0">
                 <!-- 判断二级菜单是否有结点（没有这种情况） -->
-                <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length == 0">{{item2.menuName}}</el-menu-item>
+                <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="'info2'+index2" v-show="item2.threeSubmenus.length == 0">{{item2.menuName}}</el-menu-item>
                 <template slot="title">
                   <i :class="item.menuImg"></i>
                   <span slot="title">{{item.menuName}}</span>
                 </template>
                 <!-- 判断二级菜单是否有结点（有这种情况） -->
-                <el-submenu v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length != 0">
+                <el-submenu :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length != 0">
                   <template>
                     <span slot="title">{{item2.menuName}}</span>
                   </template>
@@ -104,7 +104,7 @@ export default {
   created () {
     getMenu().then(res => {
       console.log(res,9999)
-      this.menuList = res
+      this.menuList = res.data
     })
   }
 }
