@@ -39,43 +39,40 @@
               text-color="rgb(191, 203, 217)"
               active-text-color="#ffd04b"
               :collapse="isCollapse"
-              :collapse-transition="transition">
-              <el-submenu :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index">
+              :collapse-transition="transition"
+              :unique-opened=true>     
+              <!-- 判断一级菜单是否有结点（没有这种情况） -->
+               <el-menu-item :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length == 0">
+                <i class="el-icon-document"></i>
+                <span slot="title">{{item.menuName}}</span>
+              </el-menu-item>
+
+              <!-- 判断一级菜单是否有结点（有这种情况） -->
+              <el-submenu :index="(index+1).toString()" v-for="(item, index) in menuList" :key="index" v-show="item.twoSubmenus.length != 0">
+                <!-- 判断二级菜单是否有结点（没有这种情况） -->
+                <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length == 0">{{item2.menuName}}</el-menu-item>
                 <template slot="title">
-                  <i class="el-icon-location"></i>
+                  <i :class="item.menuImg"></i>
                   <span slot="title">{{item.menuName}}</span>
                 </template>
-                <!-- <el-menu-item-group> -->
-                  <!-- <span slot="title">分组一</span> -->
-                  <!-- <el-menu-item index="1-1">选项1</el-menu-item> -->
-                  <!-- <el-menu-item index="1-2">
-                    <i class="el-icon-location"></i>
-                    <span slot="title">XXX</span>
-                  </el-menu-item> -->
-                <!-- </el-menu-item-group> -->
-                <!-- <el-menu-item-group title="分组2"> -->
-                  <!-- <el-menu-item index="1-3">选项3</el-menu-item> -->
-                <!-- </el-menu-item-group> -->
-                <el-submenu :index="(index+1).toString()+'-'+(index2+1).toString()" v-for="(item2, index2) in item.twoSubmenus" :key="index2">
-                  <span slot="title">{{item2.menuName}}</span>
-                  <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()+'-'+(index3+1).toString()" v-for="(item3, index3) in item2.threeSubmenus" :key="index3">{{item.menuName}}</el-menu-item>
+                <!-- 判断二级菜单是否有结点（有这种情况） -->
+                <el-submenu v-for="(item2, index2) in item.twoSubmenus" :key="index2" v-show="item2.threeSubmenus.length != 0">
+                  <template>
+                    <span slot="title">{{item2.menuName}}</span>
+                  </template>
+                  <!-- 三级菜单 -->
+                  <el-menu-item-group>
+                    <el-menu-item :index="(index+1).toString()+'-'+(index2+1).toString()+'-'+(index3+1).toString()" v-for="(item3, index3) in item2.threeSubmenus" :key="index3">{{item3.menuName}}</el-menu-item>
+                  </el-menu-item-group>
                 </el-submenu>
               </el-submenu>
 
-              <!-- <el-menu-item index="2">
-                <i class="el-icon-menu"></i>
-                <span slot="title">导航二</span>
-              </el-menu-item>
-
+               <!-- 
               <el-menu-item index="3" disabled>
                 <i class="el-icon-document"></i>
                 <span slot="title">导航三</span>
-              </el-menu-item>
-
-              <el-menu-item index="4">
-                <i class="el-icon-setting"></i>
-                <span slot="title">导航四</span>
-              </el-menu-item> -->
+              </el-menu-item> 
+              -->
 
             </el-menu>
           </el-col>
