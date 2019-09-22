@@ -4,7 +4,7 @@
   </div>
 </template>
 <script>
-import Index from './Index/Index'
+import Index from './Login/Login.vue'
 export default {
   name: 'Home',
   components: {
