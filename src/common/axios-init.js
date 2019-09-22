@@ -20,19 +20,27 @@ axios.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 axios.interceptors.response.use(function (response) {
+  console.log(response.data,88888)
   // 对响应数据做点什么
-  if(response.status == 200) {
+  if (response.data.resultCode == 401) {
     Message(
       {
-        message: '恭喜你，这是一条成功消息',
-        type: 'success'
+        message: response.data.message,
+        type: 'warning'
       }
     )
+     
   }
   return response;
 }, function (error) {
   // 对响应错误做点什么
-  return Promise.reject(error);
+  Message(
+    {
+      message: error,
+      type: 'success'
+    }
+  )
+  return Promise.reject(error); 
 });
 
 /**

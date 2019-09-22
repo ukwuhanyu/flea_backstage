@@ -73,6 +73,7 @@
         <!-- aside end -->
         <!-- main start -->
         <el-main>
+          <Bar></Bar>
           <router-view></router-view>
         </el-main>
         <!-- main end -->
@@ -82,8 +83,12 @@
 </template>
 <script>
 import {getMenu} from '../../common/model'
+import Bar from '../Bar/Bar'
 export default {
   name: 'Index',
+  components: {
+    Bar
+  },
   data () {
     return {
       isCollapse: true,
@@ -193,6 +198,7 @@ export default {
   .el-main {
     background-color: #E9EEF3;
     color: #333;
+    padding: 0px!important;
   }
   
   body > .el-container {
