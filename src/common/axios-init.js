@@ -37,7 +37,7 @@ axios.interceptors.response.use(function (response) {
   Message(
     {
       message: error,
-      type: 'success'
+      type: 'warning'
     }
   )
   return Promise.reject(error); 
