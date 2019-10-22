@@ -3,6 +3,8 @@ import QS from 'qs';
 import { Loading, Message } from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
+axios.defaults.withCredentials = true;
+
 // 接口默认请求地址 （在dev.env.js里面配置）
 axios.defaults.baseURL = process.env.BASE_URL
 

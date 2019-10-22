@@ -59,8 +59,11 @@ import {getu} from './model'
            
               console.log(res,444444)
               if(res.message == '成功'){
+                let user = {
+                  userName: this.form.name
+                }
+                sessionStorage.setItem('token',JSON.stringify(user))
                 this.$router.push('/menu')
-                sessionStorage.setItem('token','ture')
               }
           })
     

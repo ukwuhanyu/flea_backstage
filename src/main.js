@@ -13,15 +13,21 @@ Vue.use(ElementUI);
 Vue.config.productionTip = false
 
 // 全局路由守卫
+import { Message } from 'element-ui';
 router.beforeEach((to, from, next) => {
   if(to.path == '/login' || to.path == '/register'){
     next();
   }else{
     console.log(sessionStorage.getItem('token'),8888)
+    // 判断token是否存在
     if(sessionStorage.getItem('token')){
       next()
     }else{
-      alert('您还没有登录，请先登录');
+      // alert('您还没有登录，请先登录');
+      Message({
+        message: '您还没有登录，请先登录',
+        type: 'warning'
+      });
       next('/login');
     }
 
