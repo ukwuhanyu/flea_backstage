@@ -91,19 +91,19 @@ export default {
     getMenuList () {
       getMenu().then(res => {
         res.data.forEach((item, index) => {
+          // 将一级菜单加id（1,2,3...）
           item.id = index + 1
           console.log(item,2222)
+          // 判断是否有二级菜单
           if(item.twoSubmenus.length != 0){
             item.children = item.twoSubmenus
+            console.log(item,'children')
             item.children.forEach((item2, index2) => {
               item2.id = index2 + 1
-              if(item2.threeSubmenus.length != 0) {
-                item2.children = item.threeSubmenus
-                // item2.children.forEach((item3, index3) => {
-                //   item3.id = index3 + 1
-                // })
-                console.log(item2,7777)
-              }
+              // if(item2.threeSubmenus.length != 0) {
+              //   item2.children = item.threeSubmenus
+              //   console.log(item2,7777)
+              // }
               // item2.children.forEach((item3, index3) => {
               //   item3.id = index3 + 1
               // })

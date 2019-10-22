@@ -3,8 +3,8 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import Menu from '@/components/Menu/Menu'
 import Login from '@/components/Login/Login'
+import Admin from '@/components/Admin/Admin'
 Vue.use(Router)
-
 export default new Router({
   routes: [
     {
@@ -16,6 +16,11 @@ export default new Router({
           path: '/menu',
           name: '菜单编辑',
           component: Menu
+        },
+        {
+          path: '/admin',
+          name: '管理员编辑',
+          component: Admin
         }
       ]
     },

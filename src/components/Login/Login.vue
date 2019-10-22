@@ -57,7 +57,11 @@ import {getu} from './model'
           }).then(res=>{
             
            
-
+              console.log(res,444444)
+              if(res.message == '成功'){
+                this.$router.push('/menu')
+                sessionStorage.setItem('token','ture')
+              }
           })
     
       }

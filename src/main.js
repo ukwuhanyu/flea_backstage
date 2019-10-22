@@ -12,6 +12,22 @@ Vue.prototype.$axios = axios
 Vue.use(ElementUI);
 Vue.config.productionTip = false
 
+// 全局路由守卫
+router.beforeEach((to, from, next) => {
+  if(to.path == '/login' || to.path == '/register'){
+    next();
+  }else{
+    console.log(sessionStorage.getItem('token'),8888)
+    if(sessionStorage.getItem('token')){
+      next()
+    }else{
+      alert('您还没有登录，请先登录');
+      next('/login');
+    }
+
+  }
+})
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
