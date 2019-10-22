@@ -63,7 +63,7 @@ import {getu} from './model'
                   userName: this.form.name
                 }
                 sessionStorage.setItem('token',JSON.stringify(user))
-                this.$router.push('/menu')
+                this.$router.push('/admin')
               }
           })
     
