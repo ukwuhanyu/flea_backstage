@@ -151,10 +151,7 @@ export default {
       })
         .then(() => {
           // 删除
-          let parmas = {
-            userId: item.userId,
-            userImg: item.userImg
-          };
+          let parmas = item.userId;
           deleteAdmin(parmas).then(res => {
             console.log(res, "resssss");
             if (res.message == "成功") {

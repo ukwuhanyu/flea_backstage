@@ -31,7 +31,7 @@
       <el-table-column label="图片" width="500">
         <template slot-scope="scope">
           <!-- <span style="margin-left: 10px">{{ scope.row.date }}</span> -->
-          <img :src="scope.row.carouselUrl" class="showImg" />
+          <img :src="scope.row.carouselImg" class="showImg" />
         </template>
       </el-table-column>
       <el-table-column label="操作">
@@ -156,7 +156,7 @@ export default {
     deleteImg(item) {
       let { carouselId, carouselUrl } = item;
       console.log(item);
-      delCarousel({ carouselId: carouselId, carouselUrl: carouselUrl }).then(
+      delCarousel(carouselId).then(
         res => {
           if (res.message == "成功") {
             this.$message({
