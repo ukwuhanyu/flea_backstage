@@ -15,15 +15,16 @@ export default {
 </script>
 <style lang="stylus" scoped>
   .bar-content{
-    width: 100%;
-    height: 30px;
+    // width: 100vw;
+    height: 5vh;
     background: #fff;
     box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .05);
     padding-left: 5px;
     box-sizing: border-box;
     .el-breadcrumb{
-      height: 30px;
-      line-height: 2;
+      height: 5vh;
+      // width: 100vw;
+      line-height: 5vh;
     }
   }
 </style>

@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
     console.log(sessionStorage.getItem('token'),8888)
     // 判断token是否存在
     if(sessionStorage.getItem('token')){
-      next()
+      next();
     }else{
       // alert('您还没有登录，请先登录');
       Message({
